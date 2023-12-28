@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Employee>;
+
+<h3>Employees</h3>
+
+<button class="btn-sm btn-info" asp-action="Create">Add New Employee</button> 
+
+<form class="container">
+    <div class="row headings">
+        <div class="col-md-4">Name</div>
+        <div class="col-md-8">Age</div>
+    </div>
+    @foreach(var employee in Model)
+    {
+        <div class="row">
+            <div class="col-md-4">@employee.Name</div>
+            <div class="col-md-4">@employee.Age</div>
+            <div class="col-md-4">
+                <button class="btn-sm btn-info" asp-action="Details" asp-route-id="@employee.Id">Details</button> 
+                <button class="btn-sm btn-success" asp-action="Update" asp-route-id="@employee.Id">Edit</button> 
+                <button class="btn-sm btn-danger" asp-action="Delete" asp-route-id="@employee.Id">Delete</button>
+            </div>
+        </div>
+    }
+</form>
+
+
+
+@* <table width="50%">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var employee in Model)
+        {
+            <tr>
+                <td>@employee.Name</td>
+                <td>@employee.Age</td>
+            </tr>
+        }
+    </tbody>
+</table> *@

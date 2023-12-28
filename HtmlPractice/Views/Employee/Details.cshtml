@@ -1,0 +1,29 @@
+﻿@model Employee
+
+@{
+    ViewData["Title"] = "Employee Details";
+}
+
+<div>
+    <h4>Employee Details</h4>
+    <hr />
+    <form>
+        <div class="form-group">
+            <input id="Id" name="Id" type="hidden" value="@Model.Id">
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="Name">Employee Name:</label>
+            <input type="text" name="Name" class="form-control" value="@Model.Name" disabled>
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="Age">Age:</label>
+            <input class="form-control" name="Age" type="number" value="@Model.Age" disabled>
+        </div>
+        <div class="form-group mt-4">
+            <p>
+                <a class="btn btn-success" asp-action="Update" asp-route-id="@Model.Id">Edit</a>
+                <a class="btn btn-primary" asp-action="Index">Back to List</a>
+            </p>
+        </div>
+    </form>
+</div>

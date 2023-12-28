@@ -1,0 +1,30 @@
+﻿@model Employee
+
+@* table *@
+
+@{
+}
+
+<h3>Employee</h3>
+<form action="/Employee/Create" method="post" novalidate="novalidate">
+    <div class="form-group">
+        <input id="Id" name="Id" type="hidden" value="@Model.Id">
+    </div>
+    <div class="form-group">
+        <label class="form-label" for="Name">Employee Name:</label>
+        <input type="text" name="Name" class="form-control" value="@Model.Name">
+    </div>
+    <div class="form-group">
+        <label class="form-label" for="Age">Age:</label>
+        <input class="form-control" name="Age" type="number" value="">
+    </div>
+    <div class="form-group mt-4">
+        <p>
+            <input class="btn btn-info" type="submit" value="Create" />
+        </p>
+    </div>
+</form>
+
+
+
+
