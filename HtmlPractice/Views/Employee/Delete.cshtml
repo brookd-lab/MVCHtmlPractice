@@ -1,6 +1,7 @@
 ﻿@model Employee
 
-<h3>Delete Employee</h3>
+<h4>Delete Employee</h4>
+<hr />
 <form action="/Employee/Delete" method="post" novalidate="novalidate">
     <div class="form-group">
         <input id="Id" name="Id" type="hidden" value="@Model.Id">
@@ -16,6 +17,7 @@
     <div class="form-group mt-4">
         <p>
             <input class="btn btn-info" type="submit" value="Delete" />
+            <a class="btn btn-danger" asp-action="Index">Cancel</a>
         </p>
     </div>
 </form>

@@ -5,7 +5,8 @@
 @{
 }
 
-<h3>Employee</h3>
+<h4>New Employee</h4>
+<hr />
 <form action="/Employee/Create" method="post" novalidate="novalidate">
     <div class="form-group">
         <input id="Id" name="Id" type="hidden" value="@Model.Id">
@@ -21,6 +22,7 @@
     <div class="form-group mt-4">
         <p>
             <input class="btn btn-info" type="submit" value="Create" />
+            <button class="btn btn-primary" asp-action="Index">Cancel</button>
         </p>
     </div>
 </form>

@@ -1,5 +1,6 @@
 ﻿using HtmlPractice.Data;
 using HtmlPractice.Models;
+using HtmlPractice.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,28 +8,28 @@ namespace HtmlPractice.Controllers
 {
     public class EmployeeController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IEmployeeService  _service;
 
-        public EmployeeController(ApplicationDbContext context)
+        public EmployeeController(IEmployeeService service)
         {
-            _context = context;
+            _service = service;
         }
 
         public async Task<IActionResult> Index()
         {
-            var employees = await _context.Employees.ToListAsync();
+            var employees = await _service.GetEmployees();
             return View(employees);
         }
 
         private async Task<Employee> GetEmployeeById(int Id)
         {
-            var employee = await _context.Employees.FindAsync(Id);
+            var employee = await _service.GetEmployeeById(Id);
             return employee;
         }
 
         public async Task<IActionResult> Details(int Id)
         {
-            var employee = await GetEmployeeById(Id);
+            var employee = await _service.GetEmployeeById(Id);
 
             if (employee == null)
             {
@@ -47,8 +48,7 @@ namespace HtmlPractice.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Employee employee)
         {
-            await _context.AddAsync(employee);
-            await _context.SaveChangesAsync();
+            await _service.CreateEmployee(employee);
             return RedirectToAction("Index");
         }
 
@@ -61,8 +61,7 @@ namespace HtmlPractice.Controllers
         [HttpPost]
         public async Task<IActionResult> Update(Employee employee)
         {
-            _context.Update(employee);
-            await _context.SaveChangesAsync();
+            await _service.UpdateEmployee(employee);
             return RedirectToAction("Index");
         }
 
@@ -75,8 +74,7 @@ namespace HtmlPractice.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(Employee employee)
         {
-            _context.Remove(employee);
-            await _context.SaveChangesAsync();
+            await _service.DeleteEmployee(employee);
             return RedirectToAction("Index");
         }
     }

@@ -1,4 +1,5 @@
 using HtmlPractice.Data;
+using HtmlPractice.Service;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,7 @@ builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 // Add DataContext with Connection String
 builder.Services.AddDbContext<ApplicationDbContext>(
         options => options.UseSqlServer("name=ConnectionStrings:DefaultConnection"));
+builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 
 var app = builder.Build();
 

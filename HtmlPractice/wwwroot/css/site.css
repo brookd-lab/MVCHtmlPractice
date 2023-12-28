@@ -29,3 +29,9 @@ body {
 .btn-sm{
     
 }
+
+a.btn-sm,
+a.btn {
+    text-decoration: none;
+    border-radius: 8%;
+}
