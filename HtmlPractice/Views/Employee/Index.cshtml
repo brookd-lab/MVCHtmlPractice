@@ -2,11 +2,10 @@
 @{
     ViewData["Title"] = "Employee List";
 }
-    <span>
-        <h3>Employee List</h3>
-        <a class="btn btn-info" asp-action="Create">Create New</a>
-    </span>
-<br/>
+<h3>Employee List</h3>
+<p><a class="btn btn-info" asp-action="Create">Create New</a></p>
+<br />
+
 <table class="table">
     <thead>
         <tr>
@@ -30,8 +29,8 @@
                     @Html.DisplayFor(modelItem => employee.Age)
                 </td>
                 <td>
-                    <a class="btn btn-info" asp-action="Update" asp-route-id="@employee.Id">Edit</a> 
-                    <a class="btn btn-success" asp-action="Details" asp-route-id="@employee.Id">Details</a> 
+                    <a class="btn btn-info" asp-action="Update" asp-route-id="@employee.Id">Edit</a>
+                    <a class="btn btn-success" asp-action="Details" asp-route-id="@employee.Id">Details</a>
                     <a class="btn btn-danger" asp-action="Delete" asp-route-id="@employee.Id">Delete</a>
                 </td>
             </tr>
